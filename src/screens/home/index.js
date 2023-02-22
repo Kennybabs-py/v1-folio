@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from "react";
-// import { gsap } from "gsap";
 import styles from "./styles.module.scss";
-// import useWindowSize from "../../../utils/hooks/useWindowSize";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const projects = [
@@ -12,15 +10,11 @@ const projects = [
 const myInterests = [{ title: "food" }];
 
 export default function Landing() {
-  const hr3 = useRef(null);
-
   return (
     <div className={styles.home}>
-      <div className={styles.hero}>
-        <div className={styles.hero_text} id="intro_text">
-          <div>KEHINDE&apos;S FOLIO</div>
-          <div>frontend developer</div>
-        </div>
+      <div className={styles.home__text}>
+        <p>KEHINDE&apos;S FOLIO</p>
+        <p>frontend developer</p>
       </div>
 
       {/* <hr className={styles.hr} id="hr" /> */}
