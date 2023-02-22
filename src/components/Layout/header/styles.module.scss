@@ -1,0 +1,42 @@
+@use "@/styles/fonts";
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.header {
+  // @include showBorder();
+
+  position: fixed;
+  width: 100%;
+  border-radius: 5px;
+  z-index: 999;
+  // @include theme($dark-theme: true);
+  background-blend-mode: overlay;
+
+  @include respondMax(mobile) {
+    width: 90vw;
+    left: 5%;
+  }
+
+  &__nav {
+    // @include showBorder();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+
+    a {
+      text-decoration: none;
+
+      span {
+        font-family: "Ginger";
+        cursor: pointer;
+        color: #000;
+        font-size: clamp(1rem, 2.5vw, 20px);
+        font-weight: 600;
+      }
+    }
+  }
+}

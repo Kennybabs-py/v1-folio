@@ -1,0 +1,55 @@
+// flexbox
+@mixin flex($align: center, $justify: center, $flow: row) {
+  flex-flow: $flow;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin showBorder($color: black) {
+  border: 1px solid $color;
+}
+
+$primary-color: #000000;
+$secondary-color: #ffffff;
+
+@mixin theme($dark-theme: true) {
+  @if $dark-theme {
+    background-color: darken($secondary-color, $amount: 90%);
+    color: lighten($primary-color, $amount: 70%);
+  } @else if($dark-theme: false) {
+    background-color: lighten($primary-color, $amount: 20%);
+    color: darken($primary-color, $amount: 70%);
+  }
+}
+
+// breakpoints
+$breakpoints: (
+  "mobile": 600px,
+  "tablet": 900px,
+  "sm-desktop": 1024px,
+  "desktop": 1366px,
+  "lg-desktop": 1536px,
+) !default;
+
+@mixin respondMin($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin respondMax($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
